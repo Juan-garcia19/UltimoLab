@@ -10,6 +10,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <QTimer>
 
 #include "planetas.h"
 
@@ -30,6 +31,10 @@ public:
     void lectu();
 
 
+public slots:
+    void formula();
+
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -37,6 +42,7 @@ private:
     vector<Planetas *> planets;
     QGraphicsEllipseItem *Sol;
 
-    int Masa=0;
+    float Masa=0;
+    float PosicionFX=0,PosicionFY=0;
 };
 #endif // MAINWINDOW_H

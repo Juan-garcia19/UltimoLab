@@ -14,6 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
     //Sol = scene->addEllipse(0,0,9,9);
     lectu();
 
+    QTimer *timer = new QTimer(this);
+    connect( timer, SIGNAL(timeout()),this, SLOT(formula()));
+    timer->start(10000);
+
 
 
 }
@@ -29,6 +33,8 @@ void MainWindow::lectu()
 
     static int cont=0;
 
+    float PxS=0,PyS=0;
+
     ifstream archi;
 
     archi.open("../SistemaSolar/BD/Sistema.txt");
@@ -42,7 +48,7 @@ void MainWindow::lectu()
 
     string linea;
 
-    array <int,7> elementos{};
+    array <float,7> elementos{};
 
     while(!archi.eof()){
 
@@ -66,7 +72,7 @@ void MainWindow::lectu()
             }
             else{
                 if(variable[0] <= 57 and variable[0]>=45){
-                    elementos[posicion]=stoi(variable);
+                    elementos[posicion]=stof(variable);
                     posicion++;
                     variable="";
                 }
@@ -74,16 +80,44 @@ void MainWindow::lectu()
         }
         if(cont == 1){
             Sol = scene->addEllipse(elementos[1],elementos[2],elementos[4]*Escala,elementos[4]*Escala);
-            Masa=elementos[2];
+            Masa=elementos[3];
+            PxS=elementos[1];
+            PyS=elementos[2];
         }
         else if(cont>1){
-            plan= new Planetas(elementos[1],elementos[2],elementos[4],elementos[5],elementos[6]);
+            plan= new Planetas(elementos[1],elementos[2],elementos[4],elementos[5],elementos[6],Masa,PxS,PyS);
             scene->addItem(plan);
             planets.push_back(plan);
         }
         cont++;
     }
     archi.close();
+}
+
+void MainWindow::formula()
+{
+    for (auto planeta : planets){
+        planeta->CalAngulo();
+        int tiempo = planeta->getTime();
+        float PoX = planeta->getPosX(), PoY = planeta->getPosY();
+        float VX = planeta->getVfX(), VY = planeta->getVfY();
+        float Ax = planeta->getAcX(),Ay = planeta->getAcY();
+
+        PosicionFX = PoX + (VX * tiempo) + ((Ax*pow(tiempo,2))/2);
+        PosicionFY = PoY + (VY * tiempo) + ((Ay*pow(tiempo,2))/2);
+
+        planeta->setPos(PosicionFX*Escala,PosicionFY*Escala);
+
+        planeta->setPosX(PosicionFX);
+        planeta->setPosY(PosicionFY);
+
+        planeta->setVox(VX);
+        planeta->setVoy(VY);
+
+
+
+
+    }
 }
 
 

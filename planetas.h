@@ -3,6 +3,7 @@
 
 #define Escala 0.03
 #define PI 3.14159265
+#define GRAVEDAD 1
 
 #include <QGraphicsItem>
 #include <QGraphicsScene>
@@ -12,7 +13,7 @@
 class Planetas : public QGraphicsItem
 {
 public:
-    Planetas(int _posX, int _PosY, int _Radio, int _Vox, int _Voy, int _MasaSol,int _PxS, int _PyS);
+    Planetas(float _posX, float _PosY, float _Radio, float _Vox, float _Voy, float _MasaSol, float _PxS, float _PyS);
 
     QRectF boundingRect() const;
 
@@ -22,12 +23,38 @@ public:
 
 
 
+    float getVfX() const;
+
+    float getVfY() const;
+
+    float getAcX() const;
+
+    float getAcY() const;
+
+    int getTime() const;
+
+    float getPosX() const;
+    void setPosX(float value);
+
+    float getPosY() const;
+    void setPosY(float value);
+
+
+    void setVox(float value);
+
+    void setVoy(float value);
+
 private:
-    int PosX, PosY,PxS,PyS;
-    int Radio,RFormula;
-    int Vox,Voy;
-    int MasaSol;
-    int Theta;
+    float PosX, PosY,PxS,PyS;
+    float Radio,RFormula;
+    float Vox,Voy;
+
+    float MasaSol;
+    float Theta;
+    float AcX,AcY;
+    float VfX,VfY;
+
+    int Time=0;
 
 };
 

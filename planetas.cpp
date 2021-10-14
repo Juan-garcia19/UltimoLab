@@ -1,6 +1,6 @@
 #include "planetas.h"
 
-Planetas::Planetas(int _posX, int _PosY, int _Radio, int _Vox, int _Voy, int _MasaSol, int _PxS, int _PyS)
+Planetas::Planetas(float _posX, float _PosY, float _Radio, float _Vox, float _Voy, float _MasaSol, float _PxS, float _PyS)
 {
     PosX=_posX;
     PosY=_PosY;
@@ -28,9 +28,79 @@ void Planetas::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidge
 
 void Planetas::CalAngulo()
 {
-    Theta = atan2((PosY-PyS),(PosX-PxS)) * 180 / PI;
+
+
+    Theta = (atan2((PyS-PosY),(PxS-PosX)));// * 180) / PI;
 
     RFormula = sqrt( (pow((PosX-PxS),2)) + (pow((PosY-PyS),2)) );
 
+    AcX=(((GRAVEDAD * MasaSol) / pow(RFormula,2)) * cos(Theta));
+    AcY=(((GRAVEDAD * MasaSol) / pow(RFormula,2)) * sin(Theta));
+
+    VfX= Vox + AcX*Time;
+    VfY = Voy + AcY*Time;
+
+    Time++;
+
 
 }
+
+float Planetas::getVfX() const
+{
+    return VfX;
+}
+
+
+float Planetas::getVfY() const
+{
+    return VfY;
+}
+
+
+float Planetas::getAcX() const
+{
+    return AcX;
+}
+
+
+float Planetas::getAcY() const
+{
+    return AcY;
+}
+
+
+int Planetas::getTime() const
+{
+    return Time;
+}
+
+float Planetas::getPosX() const
+{
+    return PosX;
+}
+
+void Planetas::setPosX(float value)
+{
+    PosX = value;
+}
+
+float Planetas::getPosY() const
+{
+    return PosY;
+}
+
+void Planetas::setPosY(float value)
+{
+    PosY = value;
+}
+
+void Planetas::setVox(float value)
+{
+    Vox = value;
+}
+
+void Planetas::setVoy(float value)
+{
+    Voy = value;
+}
+
