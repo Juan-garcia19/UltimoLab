@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QTimer *timer = new QTimer(this);
     connect( timer, SIGNAL(timeout()),this, SLOT(formula()));
-    timer->start(10000);
+    timer->start(5);
 
 
 
@@ -106,7 +106,7 @@ void MainWindow::formula()
         PosicionFX = PoX + (VX * tiempo) + ((Ax*pow(tiempo,2))/2);
         PosicionFY = PoY + (VY * tiempo) + ((Ay*pow(tiempo,2))/2);
 
-        planeta->setPos(PosicionFX*Escala,PosicionFY*Escala);
+        planeta->setPos(PosicionFX*Escala,-PosicionFY*Escala);
 
         planeta->setPosX(PosicionFX);
         planeta->setPosY(PosicionFY);

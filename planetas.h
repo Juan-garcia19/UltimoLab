@@ -54,7 +54,7 @@ private:
     float AcX,AcY;
     float VfX,VfY;
 
-    int Time=0;
+    int Time=1;
 
 };
 

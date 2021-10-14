@@ -15,15 +15,16 @@ Planetas::Planetas(float _posX, float _PosY, float _Radio, float _Vox, float _Vo
 
 QRectF Planetas::boundingRect() const
 {
-    return QRectF(PosX*0.03, PosY*0.03, Radio, Radio);
+    return QRectF(-Radio/2, -Radio/2, Radio, Radio);
 }
 
 void Planetas::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     //QPixmap pixMap(":/Mapa/Texturas/rompible.png");
     //pixMap = pixMap.scaled(Radio, Radio);
-    QRectF rectangulo(PosX*Escala, PosY*Escala, Radio*Escala, Radio*Escala);
-    painter->drawEllipse(rectangulo);
+    //QRectF rectangulo(PosX*Escala, PosY*Escala, Radio*0.06, Radio*Escala);
+    painter->drawEllipse(boundingRect());
+    setPos(PosX*0.03, -PosY*0.03);
 }
 
 void Planetas::CalAngulo()
@@ -40,7 +41,6 @@ void Planetas::CalAngulo()
     VfX= Vox + AcX*Time;
     VfY = Voy + AcY*Time;
 
-    Time++;
 
 
 }
