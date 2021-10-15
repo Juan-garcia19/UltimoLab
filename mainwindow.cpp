@@ -1,6 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+/*para esta practica se deben tener en cuenta varios aspectos, por parte de alejar o acercar la pantalla pues no
+ * supe como hacerla, intente verlo en clases pero no hay grabaciones. para el area del txt no pude escalar
+ * correctamente el sistema solar, pero cuando se prueba con datos bien escalados como el ejemplo 1 y 2 funciona perfecto
+ *
+*/
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
