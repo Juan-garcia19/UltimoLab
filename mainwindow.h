@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#define Escala 0.03
+#define Escala 0.05
 
 #include <QGraphicsView>
 #include <QGraphicsScene>

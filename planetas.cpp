@@ -24,7 +24,7 @@ void Planetas::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidge
     //pixMap = pixMap.scaled(Radio, Radio);
     //QRectF rectangulo(PosX*Escala, PosY*Escala, Radio*0.06, Radio*Escala);
     painter->drawEllipse(boundingRect());
-    setPos(PosX*0.03, -PosY*0.03);
+    setPos(PosX*Escala, -PosY*Escala);
 }
 
 void Planetas::CalAngulo()
