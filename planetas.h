@@ -44,6 +44,8 @@ public:
 
     void setVoy(float value);
 
+    void setTime(int value);
+
 private:
     float PosX, PosY,PxS,PyS;
     float Radio,RFormula;
@@ -54,7 +56,7 @@ private:
     float AcX,AcY;
     float VfX,VfY;
 
-    int Time=1;
+    int Time=0;
 
 };
 

@@ -69,11 +69,6 @@ float Planetas::getAcY() const
 }
 
 
-int Planetas::getTime() const
-{
-    return Time;
-}
-
 float Planetas::getPosX() const
 {
     return PosX;
@@ -102,5 +97,14 @@ void Planetas::setVox(float value)
 void Planetas::setVoy(float value)
 {
     Voy = value;
+}
+
+void Planetas::setTime(int value)
+{
+    Time = value;
+}
+int Planetas::getTime() const
+{
+    return Time;
 }
 

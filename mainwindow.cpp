@@ -138,3 +138,19 @@ void MainWindow::on_radioButton_clicked()
 {
     timer->start(1);
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    for (auto planeta : planets){
+        planeta->setTime(1);
+    }
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    for (auto planeta : planets){
+        planeta->setTime(0);
+    }
+
+}
