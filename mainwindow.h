@@ -35,6 +35,13 @@ public slots:
     void formula();
 
 
+private slots:
+    void on_radioButton_3_clicked();
+
+    void on_radioButton_2_clicked();
+
+    void on_radioButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -44,5 +51,7 @@ private:
 
     float Masa=0;
     float PosicionFX=0,PosicionFY=0;
+
+    QTimer *timer = new QTimer(this);
 };
 #endif // MAINWINDOW_H

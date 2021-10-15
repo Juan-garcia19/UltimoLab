@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     //scene->addEllipse(0,0,500,500);
     lectu();
 
-    QTimer *timer = new QTimer(this);
+
     connect( timer, SIGNAL(timeout()),this, SLOT(formula()));
     timer->start(5);
 
@@ -65,9 +65,9 @@ void MainWindow::lectu()
 
 
         int longitud =linea.length(),posicion=0;
-        for (int i =0;i < longitud;i++){
+        for (int i =0;i < longitud+1;i++){
             //cout<<linea[i]<<endl;
-            if (linea[i] != '\t' ){
+            if (linea[i] != '\t' and i<longitud){
                 variable+=linea[i];
             }
             else{
@@ -123,3 +123,18 @@ void MainWindow::formula()
 }
 
 
+
+void MainWindow::on_radioButton_3_clicked()
+{
+   timer->start(10);
+}
+
+void MainWindow::on_radioButton_2_clicked()
+{
+    timer->start(5);
+}
+
+void MainWindow::on_radioButton_clicked()
+{
+    timer->start(1);
+}
