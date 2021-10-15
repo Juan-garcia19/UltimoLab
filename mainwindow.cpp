@@ -166,7 +166,5 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_verticalSlider_valueChanged(int value)
 {
-    int widthScene = ui->graphicsView->width()-5;
-    int heightScene = ui->graphicsView->height()-5;
     ui->graphicsView->scale(value,value);
 }

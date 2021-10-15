@@ -15,7 +15,7 @@ Planetas::Planetas(float _posX, float _PosY, float _Radio, float _Vox, float _Vo
 
 QRectF Planetas::boundingRect() const
 {
-    return QRectF(-Radio*Escala, -Radio*Escala, (Radio*2)*0.05, (Radio*2)*0.05);
+    return QRectF(-Radio*Escala, -Radio*Escala, (Radio*2)*Escala, (Radio*2)*Escala);
 }
 
 void Planetas::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
