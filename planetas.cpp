@@ -23,6 +23,7 @@ void Planetas::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidge
     //QPixmap pixMap(":/Mapa/Texturas/rompible.png");
     //pixMap = pixMap.scaled(Radio, Radio);
     //QRectF rectangulo(PosX*Escala, PosY*Escala, Radio*0.06, Radio*Escala);
+    painter->setBrush(Qt::blue);
     painter->drawEllipse(boundingRect());
     setPos(PosX*Escala, -PosY*Escala);
 }
