@@ -15,7 +15,7 @@ Planetas::Planetas(float _posX, float _PosY, float _Radio, float _Vox, float _Vo
 
 QRectF Planetas::boundingRect() const
 {
-    return QRectF(-Radio/2, -Radio/2, Radio, Radio);
+    return QRectF(-Radio*Escala, -Radio*Escala, (Radio*2)*0.05, (Radio*2)*0.05);
 }
 
 void Planetas::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
@@ -33,7 +33,7 @@ void Planetas::CalAngulo()
 
     Theta = (atan2((PyS-PosY),(PxS-PosX)));// * 180) / PI;
 
-    RFormula = sqrt( (pow((PosX-PxS),2)) + (pow((PosY-PyS),2)) );
+    RFormula = sqrt( (pow((PxS-PosX),2)) + (pow((PyS-PosY),2)) );
 
     AcX=(((GRAVEDAD * MasaSol) / pow(RFormula,2)) * cos(Theta));
     AcY=(((GRAVEDAD * MasaSol) / pow(RFormula,2)) * sin(Theta));

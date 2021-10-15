@@ -8,10 +8,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     int widthScene = ui->graphicsView->width()-5;
     int heightScene = ui->graphicsView->height()-5;
-    scene = new QGraphicsScene(-widthScene/2,-heightScene/2,ui->graphicsView->width()-5,ui->graphicsView->height()-5);
+    scene = new QGraphicsScene(-widthScene/2,-heightScene/2,ui->graphicsView->width(),ui->graphicsView->height());
     ui->graphicsView->setScene(scene);
 
-    //Sol = scene->addEllipse(0,0,9,9);
+    //scene->addEllipse(0,0,500,500);
     lectu();
 
     QTimer *timer = new QTimer(this);
@@ -72,14 +72,14 @@ void MainWindow::lectu()
             }
             else{
                 if(variable[0] <= 57 and variable[0]>=45){
-                    elementos[posicion]=stof(variable);
+                    elementos[posicion] = stof(variable);
                     posicion++;
                     variable="";
                 }
             }
         }
         if(cont == 1){
-            Sol = scene->addEllipse(elementos[1],elementos[2],elementos[4]*Escala,elementos[4]*Escala);
+            Sol = scene->addEllipse(-elementos[4]*Escala,-elementos[4]*Escala,(elementos[4]*2)*0.03,(elementos[4]*2)*0.03);
             Masa=elementos[3];
             PxS=elementos[1];
             PyS=elementos[2];
@@ -97,7 +97,9 @@ void MainWindow::lectu()
 void MainWindow::formula()
 {
     for (auto planeta : planets){
+
         planeta->CalAngulo();
+
         int tiempo = planeta->getTime();
         float PoX = planeta->getPosX(), PoY = planeta->getPosY();
         float VX = planeta->getVfX(), VY = planeta->getVfY();
