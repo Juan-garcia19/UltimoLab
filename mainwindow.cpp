@@ -167,6 +167,21 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_verticalSlider_valueChanged(int value)
 {
     float Factor=1.5;
+    static int cont = 0;
+
+    if (value > cont){
+        ui->graphicsView->scale(Factor,Factor);
+        cont=value;
+    }
+
+    else if(value < cont){
+        ui->graphicsView->scale(1/Factor,1/Factor);
+        cont=value;
+    }
+
+ }
+/*
+    float Factor=1.5;
     static int cont =0;
 
     if (value > 0){
@@ -185,30 +200,5 @@ void MainWindow::on_verticalSlider_valueChanged(int value)
         else if(cont == -1) {
             ui->graphicsView->scale(Factor,Factor);
         }
-    }
-/*
-    static int cont =0;
-   // scene = new QGraphicsScene(-widthScene/2,-heightScene/2
-    if (value==1){
-        //ui->graphicsView->setSceneRect(-widthScene/2,-heightScene/2,1000,10000);
-        ui->graphicsView->scale(1.2,1.2);
-        cont=1;
-    }
-    else if(value == 0){
-        //ui->graphicsView->setSceneRect(-widthScene/2,-heightScene/2,ui->graphicsView->width(),ui->graphicsView->height());
-        if(cont ==1){
-            ui->graphicsView->scale(-4,-4);
-        }
-        else if(cont == -1) {
-            ui->graphicsView->scale(4,4);
-        }
-
-    }
-
-    else if(value == -1){
-       // ui->graphicsView->setSceneRect(-widthScene/2,-heightScene/2,300,300);
-        ui->graphicsView->scale(0.2,0.2);
-        cont=-1;
-    }
 */
-}
+
