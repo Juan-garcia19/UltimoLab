@@ -166,5 +166,18 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_verticalSlider_valueChanged(int value)
 {
-    ui->graphicsView->scale(value,value);
+    int widthScene = ui->graphicsView->width()-5;
+    int heightScene = ui->graphicsView->height()-5;
+   // scene = new QGraphicsScene(-widthScene/2,-heightScene/2
+    if (value==1){
+        ui->graphicsView->setSceneRect(-widthScene/2,-heightScene/2,1000,10000);
+    }
+    else if(value == 0){
+        ui->graphicsView->setSceneRect(-widthScene/2,-heightScene/2,ui->graphicsView->width(),ui->graphicsView->height());
+    }
+
+    else if(value == -1){
+        ui->graphicsView->setSceneRect(-widthScene/2,-heightScene/2,300,300);
+    }
+
 }
