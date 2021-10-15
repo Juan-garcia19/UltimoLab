@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     scene = new QGraphicsScene(-widthScene/2,-heightScene/2,ui->graphicsView->width(),ui->graphicsView->height());
     ui->graphicsView->setScene(scene);
 
+    //ui->verticalSlider->valueChanged(ui->verticalSlider->value());
+
     //scene->addEllipse(0,0,500,500);
     lectu();
 
@@ -79,7 +81,9 @@ void MainWindow::lectu()
             }
         }
         if(cont == 1){
-            Sol = scene->addEllipse(-elementos[4]*Escala,-elementos[4]*Escala,(elementos[4]*2)*0.03,(elementos[4]*2)*0.03);
+            QPen pen;
+            QBrush brush1(QColor(255,255,0));
+            Sol = scene->addEllipse(-elementos[4]*Escala,-elementos[4]*Escala,(elementos[4]*2)*Escala,(elementos[4]*2)*Escala,pen,brush1);
             Masa=elementos[3];
             PxS=elementos[1];
             PyS=elementos[2];
@@ -153,4 +157,11 @@ void MainWindow::on_pushButton_2_clicked()
         planeta->setTime(0);
     }
 
+}
+
+void MainWindow::on_verticalSlider_valueChanged(int value)
+{
+    int widthScene = ui->graphicsView->width()-5;
+    int heightScene = ui->graphicsView->height()-5;
+    ui->graphicsView->scale(value,value);
 }
