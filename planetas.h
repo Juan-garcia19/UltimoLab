@@ -1,7 +1,7 @@
 #ifndef PLANETAS_H
 #define PLANETAS_H
 
-#define Escala 0.05
+#define Escala 0.10
 #define PI 3.14159265
 #define GRAVEDAD 1
 
